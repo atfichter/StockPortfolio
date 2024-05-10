@@ -44,23 +44,6 @@ const rl = readline.createInterface({
 
 app.listen(PORT, () => {
     console.log(`Web Server started and running at http://localhost:${PORT}`);
-    rl.setPrompt('Stop to shutdown the server: ');
-    rl.prompt();
-
-    rl.on('line', (line) => {
-        switch (line.trim()) {
-            case 'stop':
-                console.log('Shutting down the server');
-                process.exit(0);
-                break;
-            default:
-                console.log(`Invalid command: ${line.trim()}`);
-        }
-        rl.prompt();
-    }).on('close', () => {
-        console.log('Shutting down the server');
-        process.exit(0);
-    });
 });
 
 // Main page route
