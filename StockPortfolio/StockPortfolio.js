@@ -12,7 +12,6 @@ const readline = require('readline');
 const axios = require('axios');
 const { INSPECT_MAX_BYTES } = require('buffer');
 require('dotenv').config();
-console.log(process.env.CONNECTION_STRING); 
 
 const app = express();
 app.use(express.json());
@@ -31,7 +30,7 @@ const client = new MongoClient(process.env.MONGO_CONNECTION_STRING, {
 const database = { db: process.env.MONGO_DB_NAME, collection: process.env.MONGO_COLLECTION };
 
 const args = process.argv.slice(2);
-const PORT = process.env.PORT || 4000;
+const PORT = args.length === 1 ? parseInt(args[0], 10) : process.env.PORT || 1000;
 
 if (args.length !== 1) {
     console.log('Usage summerCampServer.js Port_Number');
